@@ -6,11 +6,19 @@ import WelcomeMessage from './components/WelcomeMessage'
 import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
+import UserProfile from './components/UserProfile'
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <div>
+        <UserProfile
+          name="Elorm Black"
+          age={27}
+          bio="Software engineer and professional DJ with a passion for technology and music."
+        />
+      </div>
       <WelcomeMessage />
       <Header />
       <MainContent />
