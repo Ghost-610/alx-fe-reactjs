@@ -3,7 +3,7 @@ import UserContext from './UserContext'
 
 
 // Access user data from UserContext
-const UserProfile = (props) => {
+function  UserProfile  (props) {
     const { user } = UserContext(UserContext);
 
     return (
