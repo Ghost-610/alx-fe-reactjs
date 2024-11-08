@@ -1,5 +1,5 @@
 import React from 'react'
-
+import UserContext from './UserContext'
 const UserProfile = (props) => {
     return (
         <div className='User-Profile'>
