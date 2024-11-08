@@ -1,6 +1,11 @@
 import React from 'react'
 import UserContext from './UserContext'
+
+
+// Access user data from UserContext
 const UserProfile = (props) => {
+    const { user } = UserContext(UserContext);
+
     return (
         <div className='User-Profile'>
             <h2>
