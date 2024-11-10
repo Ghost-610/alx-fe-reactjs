@@ -15,10 +15,9 @@ function Contact() {
         e.preventDefault();
         alert('Form submitted!');
     };
-
     return (
-        <div style={{ padding: '20px' }}>
-            <h1>Contact Us</h1>
+        <div style={{ padding: '20px',justifyItems:'center'}}>
+            <h1 >Contact Us</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
