@@ -1,10 +1,7 @@
-import React from 'react'
-import { create, useRecipeStore } from 'zustand'
+import create from 'zustand'
 
-const recipeStore = () => {
-  return (
-    <div>recipeStore</div>
-  )
-}
-
-export default recipeStore
+const useRecipeStore = create(set => ({
+    recipes: [],
+    addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
+    setRecipes: (recipes) => set({ recipes })
+}));
