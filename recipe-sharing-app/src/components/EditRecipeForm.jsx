@@ -1,61 +1,43 @@
 import React, { useState } from 'react';
-import { useRecipeStore } from './recipeStore';
+import { useRecipeStore } from './recipeStore'; // Ensure the store is correctly imported.
+import { useNavigate } from 'react-router-dom';
 
-const EditRecipeForm = ({ recipeId, onCancel }) => {
-    const updateRecipe = useRecipeStore((state) => state.updateRecipe);
-    const recipes = useRecipeStore((state) => state.recipes);
+const EditRecipeForm = ({ recipe }) => {
+    const [title, setTitle] = useState(recipe?.title || '');
+    const [description, setDescription] = useState(recipe?.description || '');
+    const updateRecipe = useRecipeStore((state) => state.updateRecipe); // Use updateRecipe from Zustand store.
+    const navigate = useNavigate();
 
-    // Find the recipe to edit by ID
-    const recipeToEdit = recipes.find((recipe) => recipe.id === recipeId);
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Prevent the form from refreshing the page.
 
-    // Local state to manage form inputs
-    const [formData, setFormData] = useState({
-        title: recipeToEdit?.title || '',
-        description: recipeToEdit?.description || '',
-    });
+        // Update the recipe using the Zustand store.
+        updateRecipe(recipe.id, { title, description });
 
-    // Handle input changes
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
-
-    // Handle form submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        updateRecipe(recipeId, formData); // Update the recipe in the store
-        onCancel(); // Close the form after submission
+        // Navigate back to the recipe details or list.
+        navigate(`/recipe/${recipe.id}`);
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <h3>Edit Recipe</h3>
             <div>
-                <label htmlFor="title">Title:</label>
+                <label>Title:</label>
                 <input
                     type="text"
-                    id="title"
-                    name="title"
-                    value={formData.title}
-                    onChange={handleChange}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                     required
                 />
             </div>
             <div>
-                <label htmlFor="description">Description:</label>
+                <label>Description:</label>
                 <textarea
-                    id="description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                     required
                 />
             </div>
             <button type="submit">Save Changes</button>
-            <button type="button" onClick={onCancel}>Cancel</button>
         </form>
     );
 };
