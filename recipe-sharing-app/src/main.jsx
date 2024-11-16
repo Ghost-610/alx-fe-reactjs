@@ -1,12 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import RecipeList from './components/RecipeList'
-import App from './App.jsx'
+import React from 'react'; // Import React explicitly
+import { createRoot } from 'react-dom/client'; // Correct usage of createRoot
+import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
+import './index.css';
+import App from './App.jsx'; // Main App Component
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-    <AddRecipeForm />
-  </StrictMode>,
-)
+const rootElement = document.getElementById('root');
+
+createRoot(rootElement).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
