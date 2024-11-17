@@ -1,6 +1,6 @@
 import React from 'react';
-// RecipeList component
-import useRecipeStore from './recipeStore'; // Adjust based on how `useRecipeStore` is exported
+import { Link } from 'react-router-dom'; // Import Link for navigation
+import { useRecipeStore } from './recipeStore';
 
 const RecipeList = () => {
     const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
@@ -8,14 +8,17 @@ const RecipeList = () => {
     return (
         <div className="recipe-list">
             {filteredRecipes.length > 0 ? (
-                filteredRecipes.map((recipe) => (
-                    <div key={recipe.id} className="recipe-card">
+                filteredRecipes.map((recipe, index) => (
+                    <div key={index} className="recipe-card">
                         <h3>{recipe.title}</h3>
                         <p>{recipe.description}</p>
+
+                        {/* Add a Link to navigate to the recipe details page */}
+                        <Link to={`/recipe/${recipe.id}`}>View Details</Link>
                     </div>
                 ))
             ) : (
-                <p className="no-recipes-message">No recipes found. Try searching for something else.</p>
+                <p>No recipes found. Try searching for something else.</p>
             )}
         </div>
     );
