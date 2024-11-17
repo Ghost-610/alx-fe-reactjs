@@ -9,7 +9,7 @@ import EditRecipeForm from './components/EditRecipeForm';
 function App() {
   return (
     <Router>
-      <div>
+      <div className="app-container">
         <Routes>
           {/* Home Route */}
           <Route
