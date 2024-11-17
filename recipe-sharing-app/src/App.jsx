@@ -5,11 +5,13 @@ import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
+import FavoritesList from './components/FavoritesList'; // Import the FavoritesList
+import RecommendationsList from './components/RecommendationsList'; // Import the RecommendationsList
 
 function App() {
   return (
     <Router>
-      <div className="app-container">
+      <div>
         <Routes>
           {/* Home Route */}
           <Route
@@ -18,6 +20,8 @@ function App() {
               <>
                 <AddRecipeForm />
                 <RecipeList />
+                <FavoritesList /> {/* Display favorites */}
+                <RecommendationsList /> {/* Display recommendations */}
               </>
             }
           />
