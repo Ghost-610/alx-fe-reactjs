@@ -1,29 +1,43 @@
 import React, { useState } from "react";
 
 const RegistrationForm = () => {
-    // State variables for input fields and error handling
+    // State variables for input fields
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+
+    // State for managing errors
+    const [errors, setErrors] = useState({
+        username: "",
+        email: "",
+        password: "",
+    });
 
     // Handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Basic validation: check if all fields are filled
-        if (!username || !email || !password) {
-            setError("All fields are required.");
+        // Validate inputs
+        const newErrors = {};
+        if (!username) newErrors.username = "Username is required.";
+        if (!email) newErrors.email = "Email is required.";
+        if (!password) newErrors.password = "Password is required.";
+
+        setErrors(newErrors);
+
+        // Check if there are any errors
+        if (Object.keys(newErrors).length > 0) {
             return;
         }
-        // Clear the error message
-        setError("");
+
+        // Clear all errors
+        setErrors({ username: "", email: "", password: "" });
 
         // Simulate form submission (you can replace this with an actual API call)
         console.log("Form Submitted:", { username, email, password });
         alert("Registration Successful!");
 
-        // Clear the input fields
+        // Clear input fields
         setUsername("");
         setEmail("");
         setPassword("");
@@ -32,7 +46,6 @@ const RegistrationForm = () => {
     return (
         <div style={{ maxWidth: "400px", margin: "auto", padding: "20px", border: "1px solid #ccc", borderRadius: "8px" }}>
             <h2>Register</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 {/* Username Field */}
                 <div style={{ marginBottom: "10px" }}>
@@ -44,6 +57,7 @@ const RegistrationForm = () => {
                         onChange={(e) => setUsername(e.target.value)}
                         style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
                     />
+                    {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
                 </div>
 
                 {/* Email Field */}
@@ -56,6 +70,7 @@ const RegistrationForm = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
                     />
+                    {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
                 </div>
 
                 {/* Password Field */}
@@ -68,6 +83,7 @@ const RegistrationForm = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
                     />
+                    {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
                 </div>
 
                 {/* Submit Button */}
