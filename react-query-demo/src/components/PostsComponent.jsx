@@ -12,7 +12,7 @@ const fetchPosts = async () => {
 
 const PostsComponent = () => {
     // Use the new useQuery API (v5+)
-    const { data, isLoading, isError, error } = useQuery({
+    const { data, isLoading, isError, error, refetch } = useQuery({
         queryKey: ["posts"], // Unique key for this query
         queryFn: fetchPosts, // Function to fetch the data
         cacheTime: 5 * 60 * 1000, // Cache data for 5 minutes
@@ -26,11 +26,19 @@ const PostsComponent = () => {
     if (isError) return <div>Error: {error.message}</div>;
 
     return (
-        <ul>
-            {data.map((post) => (
-                <li key={post.id}>{post.title}</li>
-            ))}
-        </ul>
+        <div>
+            <button
+                onClick={() => refetch()}
+                style={{ marginBottom: "20px", padding: "10px 15px", backgroundColor: "#007BFF", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}
+            >
+                Refetch Posts
+            </button>
+            <ul>
+                {data.map((post) => (
+                    <li key={post.id}>{post.title}</li>
+                ))}
+            </ul>
+        </div>
     );
 };
 
