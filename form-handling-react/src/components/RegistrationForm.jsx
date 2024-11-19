@@ -16,7 +16,6 @@ const RegistrationForm = () => {
             setError("All fields are required.");
             return;
         }
-
         // Clear the error message
         setError("");
 
@@ -35,6 +34,7 @@ const RegistrationForm = () => {
             <h2>Register</h2>
             {error && <p style={{ color: "red" }}>{error}</p>}
             <form onSubmit={handleSubmit}>
+                {/* Username Field */}
                 <div style={{ marginBottom: "10px" }}>
                     <label htmlFor="username" style={{ display: "block", marginBottom: "5px" }}>Username:</label>
                     <input
@@ -45,6 +45,8 @@ const RegistrationForm = () => {
                         style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
                     />
                 </div>
+
+                {/* Email Field */}
                 <div style={{ marginBottom: "10px" }}>
                     <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>Email:</label>
                     <input
@@ -55,6 +57,8 @@ const RegistrationForm = () => {
                         style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
                     />
                 </div>
+
+                {/* Password Field */}
                 <div style={{ marginBottom: "10px" }}>
                     <label htmlFor="password" style={{ display: "block", marginBottom: "5px" }}>Password:</label>
                     <input
@@ -65,7 +69,19 @@ const RegistrationForm = () => {
                         style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
                     />
                 </div>
-                <button type="submit" style={{ padding: "10px 15px", backgroundColor: "#28a745", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
+
+                {/* Submit Button */}
+                <button
+                    type="submit"
+                    style={{
+                        padding: "10px 15px",
+                        backgroundColor: "#28a745",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "4px",
+                        cursor: "pointer",
+                    }}
+                >
                     Register
                 </button>
             </form>
