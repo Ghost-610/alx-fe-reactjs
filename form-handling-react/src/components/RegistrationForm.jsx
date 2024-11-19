@@ -92,7 +92,7 @@ const RegistrationForm = () => {
                     style={{
                         padding: "10px 15px",
                         backgroundColor: "#28a745",
-                        color: "white",
+                        color: "grey",
                         border: "none",
                         borderRadius: "4px",
                         cursor: "pointer",

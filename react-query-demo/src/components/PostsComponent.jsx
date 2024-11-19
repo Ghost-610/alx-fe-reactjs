@@ -12,13 +12,15 @@ const fetchPosts = async () => {
 
 const PostsComponent = () => {
     // Use the new useQuery API (v5+)
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, isError, error } = useQuery({
         queryKey: ["posts"], // Unique key for this query
         queryFn: fetchPosts, // Function to fetch the data
     });
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
+
+    // Correct error handling using isError
+    if (isError) return <div>Error: {error.message}</div>;
 
     return (
         <ul>
@@ -28,5 +30,5 @@ const PostsComponent = () => {
         </ul>
     );
 };
-
+//new code added.
 export default PostsComponent;
