@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-// import AddTodoForm from "./AddTodoForm";
+import AddTodoForm from "./AddTodoForm";
 
-import AddTodoForm from "./AddTodoForm"; // Import the AddTodoForm component
-
-// Initial static array of todos
 const initialTodos = [
     { id: 1, text: "Learn React", completed: false },
     { id: 2, text: "Build a Todo App", completed: true },
@@ -59,6 +56,7 @@ const TodoList = () => {
                                 flexGrow: 1,
                                 color: todo.completed ? "#888" : "#000",
                             }}
+                            data-testid={`todo-item-${todo.id}`}
                         >
                             {todo.text}
                         </span>
@@ -73,6 +71,7 @@ const TodoList = () => {
                                 borderRadius: "4px",
                                 cursor: "pointer",
                             }}
+                            data-testid={`delete-todo-${todo.id}`}
                         >
                             Delete
                         </button>
