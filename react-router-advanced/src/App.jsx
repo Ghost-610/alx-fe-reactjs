@@ -44,7 +44,6 @@ const App = () => {
 
         {/* Dynamic Route for Blog Posts */}
         <Route path="/blog/:postId" element={<BlogPost />} />
-
         {/* Catch-All Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
