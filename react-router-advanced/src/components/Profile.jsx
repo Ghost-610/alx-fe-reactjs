@@ -21,6 +21,8 @@ const Profile = () => {
                 <Routes>
                     <Route path="details" element={<ProfileDetails />} />
                     <Route path="settings" element={<ProfileSettings />} />
+                    <Route path="/blog/:id" element={<BlogPost />} />
+
                 </Routes>
             </div>
         </div>
