@@ -24,10 +24,11 @@ const App = () => {
       </nav>
 
       <Routes>
+        {/* Home and About Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
 
-        {/* Protected Routes */}
+        {/* Protected Route for Profile */}
         <Route
           path="/profile/*"
           element={
@@ -36,11 +37,12 @@ const App = () => {
             </ProtectedRoute>
           }
         >
+          {/* Nested Routes for Profile */}
           <Route path="details" element={<ProfileDetails />} />
           <Route path="settings" element={<ProfileSettings />} />
         </Route>
 
-        {/* Dynamic Routes */}
+        {/* Dynamic Route for Blog Posts */}
         <Route path="/blog/:postId" element={<BlogPost />} />
 
         {/* Catch-All Route */}
