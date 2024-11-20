@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./components/Profile";
@@ -17,7 +17,7 @@ const App = () => {
     <Router>
       <Navbar />
       <nav>
-        <a href="/">Home</a> | <a href="/about">About</a> |
+        <Link to="/">Home</Link> | <Link to="/about">About</Link> |
         <button onClick={() => setIsAuthenticated((prev) => !prev)}>
           {isAuthenticated ? "Logout" : "Login"}
         </button>
@@ -43,7 +43,8 @@ const App = () => {
         </Route>
 
         {/* Dynamic Route for Blog Posts */}
-        <Route path="/blog/:postId" element={<BlogPost />} />
+        <Route path="/blog/:id" element={<BlogPost />} /> {/* Changed from :postId to :id */}
+
         {/* Catch-All Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
