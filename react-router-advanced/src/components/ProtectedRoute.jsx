@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';  // <-- Add this import
 
 const useAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
