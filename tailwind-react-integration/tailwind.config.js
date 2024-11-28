@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"], // Specify where to look for class usage
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"], // Specify where to look for class usage
   theme: {
     extend: {}, // Extend default Tailwind CSS theme here
   },
