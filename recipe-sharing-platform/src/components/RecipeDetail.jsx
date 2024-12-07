@@ -29,14 +29,17 @@ const RecipeDetail = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
+      
+      {/* Updated Image with Shadow */}
       <img
         src={recipe.image}
         alt={recipe.title}
-        className="w-full h-64 object-cover rounded mb-4"
+        className="w-full h-64 object-cover rounded mb-4 shadow-lg" 
       />
+      
       <p className="text-lg mb-4">{recipe.summary}</p>
 
-      {/* Ingredients Section */}
+      {/* Ingredients */}
       <h2 className="text-2xl font-semibold mb-2">Ingredients</h2>
       <ul className="list-disc ml-6 mb-4">
         {recipe.ingredients.map((ingredient, index) => (
@@ -46,7 +49,7 @@ const RecipeDetail = () => {
         ))}
       </ul>
 
-      {/* Instructions Section */}
+      {/* Instructions */}
       <h2 className="text-2xl font-semibold mb-2">Instructions</h2>
       <p className="text-gray-700">{recipe.instructions}</p>
     </div>
