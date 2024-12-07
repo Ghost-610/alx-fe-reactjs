@@ -10,16 +10,19 @@ const AddRecipeForm = () => {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
-  // Handle form input changes
+  // Handle form input changes with target.value explicitly
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const name = e.target.name;
+    const value = e.target.value;
+
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value, // Explicit use of e.target.value
     }));
+
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: "",
+      [name]: "", // Reset validation error on change
     }));
   };
 
