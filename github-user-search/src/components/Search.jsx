@@ -21,7 +21,7 @@ const Search = ({ onSearch }) => {
       try {
         await onSearch(username); // Call the parent onSearch function
         setLoading(false); // Stop loading after the API call
-      } catch(error)  {
+      } catch {
         setError("Looks like we can't find the user"); // Display error if the user isn't found
         setLoading(false); // Stop loading after the error occurs
       }
